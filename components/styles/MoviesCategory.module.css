@@ -1,0 +1,39 @@
+.container_categories_list {
+    width: auto;
+    height: auto;
+    background-color: rgb(46, 46, 46);
+    margin: 5%;
+}
+
+.container_categories_list .category_title{
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+    width: 100%;
+}
+
+.container_categories_list .container_category{
+    display: flex;
+    overflow:auto;
+}
+
+.container_category .card_category {
+    width: auto;
+    height: fit-content;
+    background-color: rgb(46, 46, 46);
+    margin: 1%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card_category .img_container {
+    width: auto;
+    height: auto;
+    margin: 5%;
+}
+
+.card_category .title {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5%;
+}

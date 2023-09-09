@@ -1,0 +1,32 @@
+.movie_card {
+    width: auto;
+    height: fit-content;
+    background-color: rgb(46, 46, 46);
+    margin: 1%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.movie_card .img_container {
+    width: auto;
+    height: auto;
+    margin: 5%;
+}
+
+.img_container .img {
+    width: auto;
+    height: auto;
+    object-fit: fill;
+}
+
+.movie_card .title {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.movie_card .summary {
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 7em;
+}

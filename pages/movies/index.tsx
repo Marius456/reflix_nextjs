@@ -1,7 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import { MovieCard } from "../../components/MovieCard";
 import { IMovie } from "../../Interfaces/IMovie";
-import "dotenv/config";
 
 export default function Movies({ movies }: { movies: IMovie[] }) {
   return (
@@ -27,11 +26,14 @@ export default function Movies({ movies }: { movies: IMovie[] }) {
 export async function getStaticProps() {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-  const response = await fetch(`${process.env.SERVER_ADDRESS}/movies`, {
-    method: "GET",
-    headers: requestHeaders,
-    mode: "cors",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/movies`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+      mode: "cors",
+    }
+  );
   const movies = await response.json();
 
   return {

@@ -1,5 +1,4 @@
 import { MoviesCategory } from "../../components/MoviesCategory";
-import "dotenv/config";
 
 export default function Categories({ categories }: { categories: string[] }) {
   return (
@@ -15,12 +14,14 @@ export default function Categories({ categories }: { categories: string[] }) {
 export async function getStaticProps() {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-
-  const response = await fetch(`${process.env.SERVER_ADDRESS}/movies/genres`, {
-    method: "GET",
-    headers: requestHeaders,
-    mode: "cors",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/movies/genres`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+      mode: "cors",
+    }
+  );
   const categories = await response.json();
 
   return {

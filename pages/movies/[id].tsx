@@ -8,7 +8,6 @@ import {
 } from "../../context/firebase";
 import { IMovie } from "../../Interfaces/IMovie";
 import styles from "../styles/MovieDetails.module.css";
-import "dotenv/config";
 
 export default function MovieDatailsPage({ movie }: { movie: IMovie }) {
   const [modalShow, setModalShow] = useState<boolean>(false);
@@ -89,11 +88,14 @@ export default function MovieDatailsPage({ movie }: { movie: IMovie }) {
 export const getStaticPaths = async () => {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-  const response = await fetch(`${process.env.SERVER_ADDRESS}/movies`, {
-    method: "GET",
-    headers: requestHeaders,
-    mode: "cors",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/movies`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+      mode: "cors",
+    }
+  );
   const movies: IMovie[] = await response.json();
 
   const paths = movies.map((movie) => {
@@ -112,11 +114,14 @@ export const getStaticProps = async (context: { params: { id: string } }) => {
   const id = context.params.id;
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-  const response = await fetch(`${process.env.SERVER_ADDRESS}/movies/${id}`, {
-    method: "GET",
-    headers: requestHeaders,
-    mode: "cors",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/movies/${id}`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+      mode: "cors",
+    }
+  );
   const movie: IMovie = await response.json();
 
   return {

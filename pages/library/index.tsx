@@ -4,7 +4,6 @@ import { MovieCard } from "../../components/MovieCard";
 import { queryForDocuments } from "../../context/firebase";
 import { ILibrary } from "../../Interfaces/ILibrary";
 import { IMovie } from "../../Interfaces/IMovie";
-import "dotenv/config";
 
 export default function Library() {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -16,7 +15,7 @@ export default function Library() {
     requestHeaders.set("Content-Type", "application/json");
     for (let index = 0; index < userFavorateMovies.length; index++) {
       const response = await fetch(
-        `${process.env.SERVER_ADDRESS}/movies/title/${userFavorateMovies[index].movieTitle}`,
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/movies/title/${userFavorateMovies[index].movieTitle}`,
         {
           method: "GET",
           headers: requestHeaders,

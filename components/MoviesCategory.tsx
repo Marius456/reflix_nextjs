@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import { IMovie } from "../Interfaces/IMovie";
 import styles from "./styles/MoviesCategory.module.css";
-import "dotenv/config";
 
 export function MoviesCategory({ category }: { category: string }) {
   const [movies, setMovies] = useState<IMovie[]>([]);
-
   const fetchData = async () => {
     const requestHeaders: HeadersInit = new Headers();
     requestHeaders.set("Content-Type", "application/json");
-
     const response = await fetch(
-      `${process.env.SERVER_ADDRESS}/movies/genres/${category}`,
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/movies/genres/${category}`,
       {
         method: "GET",
         headers: requestHeaders,
